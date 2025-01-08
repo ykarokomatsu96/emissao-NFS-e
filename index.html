@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emissão de NFS-e</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Emissão de Nota Fiscal de Serviço (NFS-e)</h1>
+        
+        <form id="nfsForm">
+            <label for="valorVenda">Valor da Venda:</label>
+            <input type="text" id="valorVenda" placeholder="R$ 0,00" maxlength="15" oninput="formatarMoeda(event)" required><br>
+
+            <label for="itens">Itens Vendidos:</label>
+            <input type="text" id="itens" required><br>
+
+            <label for="irpf">Porcentagem do IRPF (%):</label>
+            <input type="text" id="irpf" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+
+            <label for="pis">Porcentagem do PIS (%):</label>
+            <input type="text" id="pis" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+
+            <label for="cofins">Porcentagem do COFINS (%):</label>
+            <input type="text" id="cofins" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+
+            <label for="inss">Porcentagem do INSS (%):</label>
+            <input type="text" id="inss" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+
+            <label for="issqn">Porcentagem do ISSQN (%):</label>
+            <input type="text" id="issqn" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+
+            <button type="button" onclick="gerarNFS()">Gerar Nota Fiscal</button>
+        </form>
+
+        <div id="resultado">
+            <h2>Nota Fiscal Gerada:</h2>
+            <div id="notaFiscal"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
