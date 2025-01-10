@@ -4,43 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emissão de NFS-e</title>
+    <link href="https://cdn.jsdelivr.net/npm/inputmask/dist/inputmask.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Emissão de Nota Fiscal de Serviço (NFS-e)</h1>
-        
-        <form id="nfsForm">
-            <label for="valorVenda">Valor da Venda:</label>
-            <input type="text" id="valorVenda" placeholder="R$ 0,00" maxlength="15" oninput="formatarMoeda(event)" required><br>
+        <h1>Emissão de Nota Fiscal de Serviço</h1>
+        <form id="formNFS">
+            <h3>Dados do Destinatário:</h3>
+            <label for="destinatarioNome">Nome:</label>
+            <input type="text" id="destinatarioNome" required>
 
-            <label for="itens">Itens Vendidos:</label>
-            <input type="text" id="itens" required><br>
+            <label for="destinatarioCpfCnpj">CPF/CNPJ:</label>
+            <input type="text" id="destinatarioCpfCnpj" required>
 
-            <label for="irpf">Porcentagem do IRPF (%):</label>
-            <input type="text" id="irpf" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+            <label for="destinatarioInscricaoEstadual">Inscrição Estadual:</label>
+            <input type="text" id="destinatarioInscricaoEstadual">
 
-            <label for="pis">Porcentagem do PIS (%):</label>
-            <input type="text" id="pis" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+            <label for="destinatarioEndereco">Endereço:</label>
+            <input type="text" id="destinatarioEndereco" required>
 
-            <label for="cofins">Porcentagem do COFINS (%):</label>
-            <input type="text" id="cofins" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+            <label for="destinatarioMunicipio">Município:</label>
+            <input type="text" id="destinatarioMunicipio" required>
 
-            <label for="inss">Porcentagem do INSS (%):</label>
-            <input type="text" id="inss" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+            <label for="destinatarioCep">CEP:</label>
+            <input type="text" id="destinatarioCep" required>
 
-            <label for="issqn">Porcentagem do ISSQN (%):</label>
-            <input type="text" id="issqn" maxlength="5" placeholder="%" oninput="adicionarPorcentagem(event)" required><br>
+            <h3>Dados do Emissor:</h3>
+            <label for="emissorNome">Nome da Empresa:</label>
+            <input type="text" id="emissorNome" required>
 
-            <button type="button" onclick="gerarNFS()">Gerar Nota Fiscal</button>
+            <label for="emissorCpf">CNPJ:</label>
+            <input type="text" id="emissorCpf" name="emissorCpf" />
+
+
+            <label for="emissorInscricaoEstadual">Inscrição Estadual:</label>
+            <input type="text" id="emissorInscricaoEstadual">
+
+            <label for="emissorEndereco">Endereço:</label>
+            <input type="text" id="emissorEndereco" required>
+
+            <label for="emissorTelefone">Telefone:</label>
+            <input type="text" id="emissorTelefone" required>
+
+            <label for="emissorEmail">E-mail:</label>
+            <input type="email" id="emissorEmail" required>
+
+            <h3>Informações da Venda:</h3>
+            <label for="ncm">NCM:</label>
+            <input type="text" id="ncm">
+
+            <label for="cest">CEST:</label>
+            <input type="text" id="cest">
+
+            <label for="cfop">CFOP:</label>
+            <input type="text" id="cfop">
+
+            <label for="valorVenda">Valor da Venda (R$):</label>
+            <input type="text" id="valorVenda" name="valorVenda" />
+
+            <label for="itensVenda">Itens Vendidos:</label>
+            <textarea id="itensVenda" required></textarea>
+
+            <h3>Impostos:</h3>
+            <label for="irpf">IRPF (%):</label>
+            <input type="text" id="irpf" required>
+
+            <label for="pis">PIS (%):</label>
+            <input type="text" id="pis" required>
+
+            <label for="cofins">COFINS (%):</label>
+            <input type="text" id="cofins" required>
+
+            <label for="inss">INSS (%):</label>
+            <input type="text" id="inss" required>
+
+            <label for="issqn">ISSQN (%):</label>
+            <input type="text" id="issqn" required>
+
+            <button type="submit">Emitir Nota Fiscal</button>
         </form>
 
-        <div id="resultado">
-            <h2>Nota Fiscal Gerada:</h2>
-            <div id="notaFiscal"></div>
+        <div id="notaFiscal" class="nota-fiscal" style="display:none;">
+            <h2 class="notaTitle">Nota Fiscal Emitida</h2>
+            <div id="notaFiscalDisplay"></div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/inputmask/dist/inputmask.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
